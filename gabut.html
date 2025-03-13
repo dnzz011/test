@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luar Biasa! Lampu Animasi</title>
+    <style>
+        /* Mengatur tampilan keseluruhan halaman */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #ff9800, #ff5722);
+            transition: background 0.3s;
+        }
+
+        /* Kontainer utama untuk lampu */
+        .lamp-container {
+            position: relative;
+            width: 200px;
+        }
+
+        /* Area cahaya utama */
+        .light-area {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 0, 0.8), rgba(255, 255, 0, 0));
+            transition: background 0.3s;
+        }
+
+        .light-area.dark {
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        }
+
+        /* Bohlam lampu */
+        .bulb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 100px;
+            background: #fff;
+            border-radius: 30px 30px 10px 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            transition: box-shadow 0.3s, background 0.3s;
+        }
+
+        .bulb.off {
+            box-shadow: none;
+            background: #666;
+        }
+
+        .rope {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 50px;
+            background-color: brown;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="lamp-container">
+        <div class="light-area" id="light-area"></div>
+        <div class="bulb" id="bulb"></div>
+        <div class="rope" id="rope"></div>
+    </div>
+
+    <script>
+        const rope = document.getElementById('rope');
+        const bulb = document.getElementById('bulb');
+        const lightArea = document.getElementById('light-area');
+
+        rope.addEventListener('click', function () {
+            bulb.classList.toggle('off');
+            lightArea.classList.toggle('dark');
+
+            // Ubah warna latar belakang berdasarkan status lampu
+            if (bulb.classList.contains('off')) {
+                document.body.style.background = "linear-gradient(to bottom, #333, #111)";
+            } else {
+                document.body.style.background = "linear-gradient(to bottom, #ff9800, #ff5722)";
+            }
+        });
+    </script>
+</body>
+</html>
